@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Ai - Gopret</title>
+    <style>
+      * {
+        /* border: 1px solid black; */
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0px;
+      }
+
+      .container {
+        background-color: #000000;
+        background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        margin: auto;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .layar {
+        height: 100vh;
+        border-radius: 15px;
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, 0.7);
+      }
+
+      .kotak-layar {
+        /* background: #e0e0e0; */
+        /* box-shadow: 29px 29px 58px #000000, -29px -29px 58px #000000; */
+        margin: auto;
+        height: 92%;
+        width: 380px;
+        padding: 5px;
+        overflow-y: auto;
+        box-sizing: border-box;
+      }
+
+      .chat-bot {
+        background-color: white;
+        width: 80%;
+        margin: 15px;
+        border-radius: 15px;
+        padding: 10px;
+      }
+
+      .chat-user {
+        background-color: white;
+        /* direction: rtl; */
+        width: 80%;
+        margin: 15px;
+        border-radius: 15px;
+        padding: 10px;
+        margin-left: auto;
+      }
+
+      h2,
+      p,
+      hr {
+        margin: 0px;
+      }
+
+      hr {
+        margin: 5px 0px;
+      }
+
+      h2 {
+        font-size: 17px;
+      }
+
+      .chat-text {
+        height: 8%;
+        padding: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-text {
+        padding: 5px;
+        width: 100%;
+      }
+
+      input, button {
+        height: 35px;
+        display: inline-block;
+        margin: 0px;
+        padding: 8px;
+        border: 0px;
+        border-radius: 8px;
+      }
+
+      .text {
+        width: 80%;
+      }
+
+      .send {
+        width: 18%;
+      }
+
+      button:disabled{
+        background-color: rgb(220, 241, 96);
+        color: black;
+      }
+
+      div.container-banner {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        background-color: transparent;
+        z-index: 1;
+      }
+
+      div.banner {
+        background-color: aliceblue;
+        width: 70%;
+        text-align: center;
+        height: 30%;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      input.btn-banner {
+        display: block;
+        width: 100%;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-banner">
+        <div class="banner">
+          <p>input tidak boleh kosong!!!</p>
+          <button onclick="noneBanner()" class="btn-banner">OK</button>
+        </div>
+      </div>
+      <div class="layar">
+        <div class="kotak-layar">
+          <div class="chat-bot">
+            <h2 class="bot">Miyu Bot</h2>
+            <hr />
+            <p class="chat">
+              Halo kak, saya chat ai yang siap menjawab pertanyaan anda😊.
+            </p>
+          </div>
+          <!-- <div class="chat-user">
+            <h2 class="user">User</h2>
+            <hr />
+            <p class="chat">
+              Apa itu java?
+            </p>
+          </div> -->
+        </div>
+        <div class="chat-text">
+          <div class="form-text">
+            <input oninput="checkInput()" placeholder="tulis pertanyaan mu" type="text" class="text" >
+            <button class="send" onclick="clickSend()" >Kirim</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
