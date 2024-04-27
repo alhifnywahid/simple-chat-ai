@@ -4,7 +4,7 @@ const kotakLayar = document.querySelector("div.kotak-layar");
 
 
 function checkInput() {
-  if (input.value.trim() !== '') {
+  if (input.value) {
     // btnSend.style.backgroundColor = "blue";
     btnSend.removeAttribute("disabled");
   } else {
