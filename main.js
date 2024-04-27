@@ -54,7 +54,7 @@ function clickSend() {
   const h2ChatUser = document.createElement("h2");
   const rowUser = document.createElement("hr");
   const pChatUser = document.createElement("p");
-  const h2Teks = document.createTextNode("User");
+  const h2Teks = document.createTextNode(bannerInput.value);
   const newTeksUser = document.createTextNode(input.value);
 
   divChatUser.classList.add("chat-user");
