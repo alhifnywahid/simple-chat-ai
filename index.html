@@ -5,18 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat Ai - Gopret</title>
     <style>
-      * {
+      *,
+      *::after,
+      *::before {
         /* border: 1px solid black; */
         box-sizing: border-box;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: rgba(#f5f5f5, #f5f5f5, #f5f5f5, alpha);
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: rgba(#db0f0f, #cc2a2a, #b63333, 1);
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(#db0f0f, #cc2a2a, #b63333, 10);
       }
 
       body {
         margin: 0px;
       }
 
+      button {
+        cursor: pointer;
+      }
+
       .container {
         background-color: #000000;
-        background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        background-image: url("https://i.pinimg.com/originals/44/6e/3b/446e3b79395a287ca32f7977dd83b290.jpg");
         margin: auto;
         height: 100vh;
         display: flex;
@@ -28,35 +53,45 @@
         height: 100vh;
         border-radius: 15px;
         overflow: hidden;
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: #f0edcf;
+        background: rgb(11, 96, 176);
+        background: linear-gradient(
+          90deg,
+          rgba(11, 96, 176, 1) 0%,
+          rgba(64, 162, 216, 1) 96%
+        );
+        background-position: center;
+        background-size: cover;
       }
 
       .kotak-layar {
-        /* background: #e0e0e0; */
-        /* box-shadow: 29px 29px 58px #000000, -29px -29px 58px #000000; */
         margin: auto;
         height: 92%;
-        width: 380px;
+        /* width: 380px; */
+        max-width: 600px;
         padding: 5px;
         overflow-y: auto;
         box-sizing: border-box;
       }
 
+      .chat-user,
       .chat-bot {
-        background-color: white;
+        border: 2px solid whitesmoke;
+        background-color: transparent;
+        color: rgb(241, 241, 241);
         width: 80%;
         margin: 15px;
         border-radius: 15px;
         padding: 10px;
       }
 
+      pre {
+        width: 100%;
+        text-wrap: wrap;
+      }
+
       .chat-user {
-        background-color: white;
         /* direction: rtl; */
-        width: 80%;
-        margin: 15px;
-        border-radius: 15px;
-        padding: 10px;
         margin-left: auto;
       }
 
@@ -80,6 +115,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: #40a2d8;
       }
 
       .form-text {
@@ -87,13 +123,22 @@
         width: 100%;
       }
 
-      input, button {
+      input,
+      button {
         height: 35px;
         display: inline-block;
         margin: 0px;
         padding: 8px;
         border: 0px;
         border-radius: 8px;
+      }
+
+      input:focus,
+      button:focus {
+        outline: none;
+        border: 2px solid #0b60b0;
+        background-color: #40a2d8;
+        color: white;
       }
 
       .text {
@@ -104,51 +149,40 @@
         width: 18%;
       }
 
-      button:disabled{
-        background-color: rgb(220, 241, 96);
-        color: black;
+      button:disabled {
+        cursor: text;
       }
 
-      div.container-banner {
+      /* SKELETON */
+      .skeleton {
+        position: relative;
+      }
+      .skeleton::before {
+        content: "";
+        position: absolute;
+        border-radius: 10px;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 100vh;
-        position: fixed;
-        display: none;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        background-color: transparent;
-        z-index: 1;
+        height: 100%;
+        z-index: 10;
+        background: linear-gradient(90deg, #525252, #f9f9f9, #eee);
+        background-size: 200%;
+        animation: skeleton 1s infinite reverse;
       }
-
-      div.banner {
-        background-color: aliceblue;
-        width: 70%;
-        text-align: center;
-        height: 30%;
-        border-radius: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 10px;
+      @keyframes skeleton {
+        0% {
+          background-position: -100% 0;
+        }
+        100% {
+          background-position: 100% 0;
+        }
       }
-
-      input.btn-banner {
-        display: block;
-        width: 100%;
-      }
-      
+      /* SKELETON */
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="container-banner">
-        <div class="banner">
-          <p>input tidak boleh kosong!!!</p>
-          <button onclick="noneBanner()" class="btn-banner">OK</button>
-        </div>
-      </div>
       <div class="layar">
         <div class="kotak-layar">
           <div class="chat-bot">
@@ -162,14 +196,19 @@
             <h2 class="user">User</h2>
             <hr />
             <p class="chat">
-              Apa itu java?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
           </div> -->
         </div>
         <div class="chat-text">
           <div class="form-text">
-            <input oninput="checkInput()" placeholder="tulis pertanyaan mu" type="text" class="text" >
-            <button class="send" onclick="clickSend()" >Kirim</button>
+            <input
+              placeholder="tulis pertanyaan mu"
+              type="text"
+              class="text"
+              oninput="checkInput()"
+            />
+            <button class="send" onclick="clickSend()" disabled>Kirim</button>
           </div>
         </div>
       </div>
