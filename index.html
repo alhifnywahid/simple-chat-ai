@@ -212,6 +212,7 @@
       .banner input {
         border: 1px solid #0b60b0;
         color: black;
+        width: 100%;
       }
 
       /* .banner input:focus {
@@ -219,7 +220,7 @@
       } */
 
       .banner button {
-        width: 180px;
+        width: 100%;
         border: 1px solid #0b60b0;
       }
 
@@ -255,6 +256,23 @@
         justify-content: space-evenly;
         align-items: center;
       }
+
+      div.code {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 8px;
+      }
+
+      div.code a {
+        text-decoration: none;
+        display: block;
+        outline: black solid 1px;
+        text-align: center;
+        width: 100%;
+      }
+      
     </style>
   </head>
   <body>
@@ -270,6 +288,10 @@
             autocomplete="off"
           />
           <button onclick="checkName()">Kirim</button>
+          <div class="code">
+            <a href="https://github.com/alhifnywahid" target="_blank"><i>Github</i></a>
+            <a href="https://github.com/alhifnywahid/simple-chat-ai"  target="_blank"><i>Code</i></a>
+          </div>
         </div>
       </div>
       <div class="layar">
