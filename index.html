@@ -224,6 +224,37 @@
       }
 
       /* SKELETON */
+
+      .div-cpy button {
+        box-sizing: border-box;
+        color: white;
+        height: fit-content;
+        margin: 0px;
+        padding: 3px;
+        background-color: transparent;
+        margin-left: auto;
+      }
+
+      .div-cpy button:focus {
+        border-radius: 5px;
+        border: none;
+        outline: none;
+      }
+
+      .div-cpy button:disabled {
+        color: grey;
+      }
+
+      .div-cpy h2 {
+        margin-right: auto;
+      }
+
+      .div-cpy {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+      }
     </style>
   </head>
   <body>
@@ -236,6 +267,7 @@
             type="text"
             name="name"
             id=""
+            autocomplete="off"
           />
           <button onclick="checkName()">Kirim</button>
         </div>
@@ -243,7 +275,10 @@
       <div class="layar">
         <div class="kotak-layar">
           <!-- <div class="chat-bot">
-            <h2 class="bot">Miyu Bot</h2>
+            <div class="div-cpy">
+              <h2 class="bot">Miyu Bot</h2>
+              <button onclick="copy(this)">Copy</button>
+            </div>
             <hr />
             <p class="chat">
               Halo kak, saya chat ai yang siap menjawab pertanyaan anda😊.

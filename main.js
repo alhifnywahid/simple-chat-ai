@@ -5,8 +5,6 @@ const bannerInput = document.querySelector(".banner input");
 const bannerButton = document.querySelector(".banner button");
 const containerBanner = document.querySelector(".container-banner");
 
-
-
 const divChatBot = document.createElement("div");
 const h2ChatBot = document.createElement("h2");
 const rowBot = document.createElement("hr");
@@ -15,14 +13,15 @@ const h2TeksBot = document.createTextNode("Miyu Bot");
 
 divChatBot.classList.add("chat-bot");
 h2ChatBot.classList.add("bot");
-// pChatBot.classList.add("chat", "skeleton");
-
+pChatBot.classList.add("chat");
 
 function checkName() {
   if (!bannerInput.value) return alert("Masukkan nama lah bro bro.");
-  containerBanner.style.display = 'none';
+  containerBanner.style.display = "none";
 
-  const newTeksBot = document.createTextNode(`Halo ${bannerInput.value}, saya chat ai yang siap menjawab semua pertanyaan anda!`);
+  const newTeksBot = document.createTextNode(
+    `Halo ${bannerInput.value}, saya chat ai yang siap menjawab semua pertanyaan anda!`
+  );
   kotakLayar.appendChild(divChatBot);
   h2ChatBot.appendChild(h2TeksBot);
   pChatBot.appendChild(newTeksBot);
@@ -68,23 +67,32 @@ function clickSend() {
   divChatUser.appendChild(rowUser);
   divChatUser.appendChild(pChatUser);
 
+  const divPy = document.createElement("div");
   const divChatBot2 = document.createElement("div");
   const h2ChatBot2 = document.createElement("h2");
+  const buttonCopy = document.createElement("button");
   const rowBot2 = document.createElement("hr");
   const pChatBot2 = document.createElement("pre");
   const h2TeksBot2 = document.createTextNode("Miyu Bot");
   const newTeksBot2 = document.createTextNode("One More Than");
+  const texButton = document.createTextNode("Copy");
 
   divChatBot2.classList.add("chat-bot");
+  divPy.classList.add("div-cpy");
   h2ChatBot2.classList.add("bot");
+  buttonCopy.setAttribute('onclick', "copy(this)")
+  buttonCopy.setAttribute('disabled', "true")
   pChatBot2.classList.add("chat", "skeleton");
 
   kotakLayar.appendChild(divChatBot2);
+  divChatBot2.appendChild(divPy)
+  divPy.appendChild(h2ChatBot2);
   h2ChatBot2.appendChild(h2TeksBot2);
-  pChatBot2.appendChild(newTeksBot2);
-  divChatBot2.appendChild(h2ChatBot2);
+  divPy.appendChild(buttonCopy);
+  buttonCopy.appendChild(texButton);
   divChatBot2.appendChild(rowBot2);
   divChatBot2.appendChild(pChatBot2);
+  pChatBot2.appendChild(newTeksBot2);
 
   kotakLayar.scrollTop = kotakLayar.scrollHeight;
 
@@ -96,6 +104,7 @@ function clickSend() {
         newTeksBot2.textContent = json;
         pChatBot2.classList.remove("skeleton");
         input.removeAttribute("disabled");
+        buttonCopy.removeAttribute('disabled')
         btnSend.setAttribute("disabled", "true");
         kotakLayar.scrollTop = kotakLayar.scrollHeight;
       }
@@ -104,4 +113,16 @@ function clickSend() {
   rendering();
 
   input.value = "";
+}
+
+function copy(button) {
+  const parentDiv = button.closest(".chat-bot");
+  const chatText = parentDiv.querySelector("pre.chat");
+  button.innerHTML = "Done";
+  button.style.outline = "#2e293b solid 1px";
+  navigator.clipboard.writeText(chatText.innerHTML.trim());
+  setTimeout(() => {
+    button.innerHTML = "Copy";
+    button.style.outline = "none";
+  }, "1000");
 }
