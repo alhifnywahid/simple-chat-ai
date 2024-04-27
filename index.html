@@ -68,6 +68,7 @@
         margin: auto;
         height: 92%;
         /* width: 380px; */
+        min-width: 380px;
         max-width: 600px;
         padding: 5px;
         overflow-y: auto;
@@ -79,7 +80,7 @@
         border: 2px solid whitesmoke;
         background-color: transparent;
         color: rgb(241, 241, 241);
-        width: 80%;
+        width: 250px;
         margin: 15px;
         border-radius: 15px;
         padding: 10px;
@@ -178,20 +179,73 @@
           background-position: 100% 0;
         }
       }
+
+      .container-banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 100;
+      }
+
+      .banner {
+        background-color: beige;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-width: 400px;
+        max-height: 300px;
+        padding: 30px;
+        gap: 15px;
+        border-radius: 15px;
+      }
+
+      .banner input {
+        border: 1px solid #0b60b0;
+        color: black;
+      }
+
+      /* .banner input:focus {
+        background-color: inherit;
+      } */
+
+      .banner button {
+        width: 180px;
+        border: 1px solid #0b60b0;
+      }
+
       /* SKELETON */
     </style>
   </head>
   <body>
     <div class="container">
+      <div class="container-banner">
+        <div class="banner">
+          <label for="name">Masukkan nama anda</label>
+          <input
+            placeholder="nama bapak mu juga gpp"
+            type="text"
+            name="name"
+            id=""
+          />
+          <button onclick="checkName()">Kirim</button>
+        </div>
+      </div>
       <div class="layar">
         <div class="kotak-layar">
-          <div class="chat-bot">
+          <!-- <div class="chat-bot">
             <h2 class="bot">Miyu Bot</h2>
             <hr />
             <p class="chat">
               Halo kak, saya chat ai yang siap menjawab pertanyaan anda😊.
             </p>
-          </div>
+          </div> -->
           <!-- <div class="chat-user">
             <h2 class="user">User</h2>
             <hr />
@@ -203,6 +257,7 @@
         <div class="chat-text">
           <div class="form-text">
             <input
+              tabindex="-1"
               placeholder="tulis pertanyaan mu"
               type="text"
               class="text"
