@@ -31,8 +31,10 @@
         background: rgba(#db0f0f, #cc2a2a, #b63333, 10);
       }
 
+      html,
       body {
         margin: 0px;
+        height: 100%;
       }
 
       button {
@@ -40,10 +42,10 @@
       }
 
       .container {
+        height: -webkit-fill-available;
         background-color: #000000;
         background-image: url("https://i.pinimg.com/originals/44/6e/3b/446e3b79395a287ca32f7977dd83b290.jpg");
         margin: auto;
-        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -51,8 +53,7 @@
 
       .layar {
         width: 100%;
-        height: 85vh;
-        /* margin: 20px 20px; */
+        height: 100%;
         border-radius: 15px;
         overflow: hidden;
         background-color: #f0edcf;
@@ -272,7 +273,6 @@
         text-align: center;
         width: 100%;
       }
-      
     </style>
   </head>
   <body>
@@ -289,8 +289,14 @@
           />
           <button onclick="checkName()">Kirim</button>
           <div class="code">
-            <a href="https://github.com/alhifnywahid" target="_blank"><i>Github</i></a>
-            <a href="https://github.com/alhifnywahid/simple-chat-ai"  target="_blank"><i>Code</i></a>
+            <a href="https://github.com/alhifnywahid" target="_blank"
+              ><i>Github</i></a
+            >
+            <a
+              href="https://github.com/alhifnywahid/simple-chat-ai"
+              target="_blank"
+              ><i>Code</i></a
+            >
           </div>
         </div>
       </div>
